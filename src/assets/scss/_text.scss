@@ -1,0 +1,28 @@
+@each $color, $value in $colors {
+  @include text-emphasis-variant(".text-#{$color}", $value, true);
+}
+
+@each $color, $value in $grays {
+  @include text-emphasis-variant(".text-gray-#{$color}", $value, true);
+}
+
+.link-text {
+  &:hover {
+    text-decoration: none;
+
+    @at-root &.text-body {
+      color: $primary !important;
+    }
+  }
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+main {
+  p {
+    color: $gray-500;
+    font-weight: 400;
+  }
+}
