@@ -13,6 +13,9 @@ class Register extends Component {
             name: '',
             username: '',
             email: '',
+            address: '',
+            phoneNumber: '',
+            dateOfBirth: '',
             password: '',
             password_confirmation: '',
             agree: 0,
@@ -76,10 +79,14 @@ class Register extends Component {
             name: this.state.name,
             username: this.state.username,
             email: this.state.email,
+            address: this.state.address,
+            phoneNumber: this.state.phoneNumber,
+            dateOfBirth: this.state.dateOfBirth,
             password: this.state.password,
             password_confirmation: this.state.password_confirmation,
             agree: this.state.agree,
         };
+        console.log(user)
 
         axios.post(`${config.apiUrl}/api/register`, user)
             .then(response => response.data)
@@ -156,6 +163,34 @@ class Register extends Component {
                                                disabled={this.state.isLoading}
                                                value={this.state.email} onChange={this.handleFieldChange}/>
                                         {this.renderErrorFor('email')}
+                                    </div>
+                                    <div className='form-group'>
+                                        <label htmlFor='address'>Address</label>
+                                        <input id='address' type='text'
+                                               className={`form-control ${this.hasErrorFor('address') ? 'is-invalid' : ''}`}
+                                               name='address' placeholder={'Your address'} required maxLength='50'
+                                               disabled={this.state.isLoading}
+                                               value={this.state.address} onChange={this.handleFieldChange}/>
+                                        {this.renderErrorFor('address')}
+                                    </div>
+                                    <div className='form-group'>
+                                        <label htmlFor='email'>Phone Number</label>
+                                        <input id='phoneNumber' type='number'
+                                               className={`form-control ${this.hasErrorFor('phoneNumber') ? 'is-invalid' : ''}`}
+                                               name='phoneNumber' placeholder={'Your phone number'} required maxLength='50'
+                                               disabled={this.state.isLoading}
+                                               value={this.state.phoneNumber} onChange={this.handleFieldChange}/>
+                                        {this.renderErrorFor('phoneNumber')}
+                                    </div>
+                                    <div className='form-group'>
+                                        <label htmlFor='email'>Birthday</label>
+                                        <input type='date'
+                                               className={`form-control datepicker ${this.hasErrorFor('dateOfBirth') ? 'is-invalid' : ''}`}
+                                               id="dateOfBirth" name="dateOfBirth" autocomplete="off" required maxlength="20"
+                                                placeholder="Your birthday"
+                                               disabled={this.state.isLoading}
+                                               value={this.state.dateOfBirth} onChange={this.handleFieldChange}/>
+                                        {this.renderErrorFor('dateOfBirth')}
                                     </div>
                                     <div className="form-row">
                                         <div className="col-md-6">
